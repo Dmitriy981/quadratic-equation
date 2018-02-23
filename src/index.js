@@ -1,3 +1,21 @@
 module.exports = function solveEquation(equation) {
-  // your implementation
+    const REVERSE_COMPARATOR = (left, right) => left - right;
+    let splitted = equation.split(" ");
+
+    let a = splitted[0];
+    let b = checkToken(splitted[4], splitted[3]);
+    let c = checkToken(splitted[splitted.length - 1], splitted[splitted.length - 2]);
+
+    let d = Math.sqrt(b * b - 4 * a * c);
+    
+    return [parseInt((-b - d)/(2 * a)), parseInt((-b + d)/(2 * a))].sort(REVERSE_COMPARATOR);
+}
+
+
+function checkToken(numeral, token) {
+    if(token == "-") {
+        return -numeral;
+    }
+
+    return numeral;
 }
